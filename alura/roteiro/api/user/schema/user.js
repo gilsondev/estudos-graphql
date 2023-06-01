@@ -2,10 +2,19 @@ const userSchema = `#graphql
   scalar DateTime
 
   type User {
+    id: ID
     name: String!
     active: Boolean!
     email: String!
     role: Role!
+    createdAt: DateTime
+  }
+
+  input UserInput {
+    name: String
+    active: Boolean
+    email: String
+    role: RolesType
     createdAt: DateTime
   }
 
@@ -26,8 +35,8 @@ const userSchema = `#graphql
   }
 
   type Mutation {
-    createUser(name: String!, email: String!, role: String!, createdAt: DateTime): User!
-    updateUser(id: ID!, name: String, email: String, role: String!, active: Boolean!): User!
+    createUser(user: UserInput): User!
+    updateUser(id: ID!, user: UserInput): User!
     deleteUser(id: ID!): ID!
   }
 `;

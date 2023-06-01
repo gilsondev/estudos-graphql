@@ -21,11 +21,11 @@ const userResolvers = {
     user: (root, { id }, { dataSources }) => dataSources.usersAPI.getUser(id),
   },
   Mutation: {
-    createUser: (root, user, { dataSources }) => {
+    createUser: (root, { user }, { dataSources }) => {
       return dataSources.usersAPI.createUser(user);
     },
-    updateUser: (root, user, { dataSources }) => {
-      return dataSources.usersAPI.updateUser(user);
+    updateUser: (root, { id, user }, { dataSources }) => {
+      return dataSources.usersAPI.updateUser(id, user);
     },
     deleteUser: (root, { id }, { dataSources }) => {
       return dataSources.usersAPI.deleteUser(id);

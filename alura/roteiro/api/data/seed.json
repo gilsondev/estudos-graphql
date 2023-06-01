@@ -49,6 +49,13 @@
       "createdAt": "2023-06-01T00:00:00.000Z",
       "id": 7,
       "active": true
+    },
+    {
+      "name": "Carla Silva",
+      "active": true,
+      "email": "carla.silva@mail.com",
+      "role": 3,
+      "id": 8
     }
   ],
   "roles": [
