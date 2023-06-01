@@ -41,6 +41,14 @@
       "active": true,
       "email": "m@m.com",
       "role": 2
+    },
+    {
+      "name": "Silvano",
+      "email": "silvano@mail.com",
+      "role": 1,
+      "createdAt": "2023-06-01T00:00:00.000Z",
+      "id": 7,
+      "active": true
     }
   ],
   "roles": [
