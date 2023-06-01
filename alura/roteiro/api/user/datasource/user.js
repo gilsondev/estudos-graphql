@@ -29,7 +29,11 @@ export default class UsersAPI extends RESTDataSource {
       body: { ...user, active: true, role: role[0].id },
     });
 
-    return { ...user, role: role[0] };
+    return {
+      code: 201,
+      message: "User created successfully",
+      user: { ...user, role: role[0] },
+    };
   }
 
   async updateUser(id, user) {
@@ -38,12 +42,16 @@ export default class UsersAPI extends RESTDataSource {
       body: { ...user, role: role[0].id },
     });
 
-    return { ...user, role: role[0] };
+    return {
+      code: 200,
+      message: "User updated successfully",
+      user: { ...user, role: role[0] },
+    };
   }
 
   async deleteUser(id) {
     const user = await this.get(`/users/${id}`);
     await this.delete(`/users/${id}`);
-    return id;
+    return { code: 200, message: "User deleted successfully" };
   }
 }

@@ -36,8 +36,24 @@ const userSchema = `#graphql
 
   type Mutation {
     createUser(user: UserInput): User!
-    updateUser(id: ID!, user: UserInput): User!
-    deleteUser(id: ID!): ID!
+    updateUser(id: ID!, user: UserInput): ResponseUpdate!
+    deleteUser(id: ID!): ResponseDelete!
+  }
+
+  interface CustomResponse {
+    code: Int!
+    message: String!
+  }
+
+  type ResponseDelete implements CustomResponse {
+    code: Int!
+    message: String!
+  }
+
+  type ResponseUpdate implements CustomResponse {
+    code: Int!
+    message: String!
+    user: User!
   }
 `;
 
