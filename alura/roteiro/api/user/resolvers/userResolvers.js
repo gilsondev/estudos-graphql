@@ -1,6 +1,12 @@
 import { GraphQLScalarType } from "graphql";
 
 const userResolvers = {
+  // Not required but, it's good define custom value to enum if you want
+  RolesType: {
+    ESTUDANTE: "ESTUDANTE",
+    DOCENTE: "DOCENTE",
+    COORDENACAO: "COORDENACAO",
+  },
   DateTime: new GraphQLScalarType({
     name: "DateTime",
     description: "A valid date time value.",

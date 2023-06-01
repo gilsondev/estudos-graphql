@@ -14,6 +14,12 @@ const userSchema = `#graphql
     type: String!
   }
 
+  enum RolesType {
+    ESTUDANTE
+    DOCENTE
+    COORDENACAO
+  }
+
   type Query {
     users: [User!]!
     user(id: ID!): User!
