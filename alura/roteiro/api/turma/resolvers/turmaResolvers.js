@@ -28,6 +28,14 @@ const turmaResolvers = {
       return dataSources.turmasAPI.deleteTurma(id);
     },
   },
+  Turma: {
+    registrations: (parent, _, { dataSources }, info) => {
+      return dataSources.registrationsAPI.getRegistrations(parent.id);
+    },
+    teacher: (parent, _, { dataSources }, info) => {
+      return dataSources.usersAPI.getUser(parent.teacher_id);
+    },
+  },
 };
 
 export default turmaResolvers;

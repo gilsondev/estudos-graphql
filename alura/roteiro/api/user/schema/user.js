@@ -8,6 +8,7 @@ const userSchema = `#graphql
     email: String!
     role: Role!
     createdAt: DateTime
+    registrations: [Matricula]
   }
 
   input UserInput {

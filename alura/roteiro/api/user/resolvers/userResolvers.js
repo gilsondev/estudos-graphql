@@ -31,6 +31,11 @@ const userResolvers = {
       return dataSources.usersAPI.deleteUser(id);
     },
   },
+  User: {
+    registrations: (parent, _, { dataSources }) => {
+      return dataSources.registrationsAPI.getRegistrationsByUser(parent.id);
+    },
+  },
 };
 
 export default userResolvers;

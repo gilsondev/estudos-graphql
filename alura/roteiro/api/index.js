@@ -3,17 +3,19 @@ import path from "path";
 import { ApolloServer } from "@apollo/server";
 import { mergeTypeDefs } from "@graphql-tools/merge";
 import { startStandaloneServer } from "@apollo/server/standalone";
-import userResolvers from "./user/resolvers/userResolvers.js";
-import userSchema from "./user/schema/user.js";
-import UsersAPI from "./user/datasource/user.js";
-import turmaShema from "./turma/schema/turma.js";
-import turmaResolvers from "./turma/resolvers/turmaResolvers.js";
-import TurmasAPI from "./turma/datasource/turma.js";
+
+import { UsersAPI, userResolvers, userSchema } from "./user/index.js";
+import { TurmasAPI, turmaResolvers, turmaSchema } from "./turma/index.js";
+import {
+  RegistrationsAPI,
+  matriculaResolvers,
+  matriculaSchema,
+} from "./matricula/index.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
-const typeDefs = mergeTypeDefs([userSchema, turmaShema]);
-const resolvers = [userResolvers, turmaResolvers];
+const typeDefs = mergeTypeDefs([userSchema, turmaSchema, matriculaSchema]);
+const resolvers = [userResolvers, turmaResolvers, matriculaResolvers];
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -34,6 +36,7 @@ const { url } = await startStandaloneServer(server, {
       dataSources: {
         usersAPI: new UsersAPI(),
         turmasAPI: new TurmasAPI(dbConfig),
+        registrationsAPI: new RegistrationsAPI(dbConfig),
       },
     };
   },

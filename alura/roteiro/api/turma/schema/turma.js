@@ -9,6 +9,7 @@ const turmaShema = `#graphql
     started_at: DateTime
     teacher: User!
     created_at: DateTime!
+    registrations: [Matricula]
   }
 
   input TurmaInput {
